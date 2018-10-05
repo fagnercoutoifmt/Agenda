@@ -1,16 +1,22 @@
 <?php
 
 function Conectar_Banco() {
-    
-    $conn = mysqli_connect("localhost", "root", "159753", "Agenda");
-   
+
+    $dbhost = getenv('OPENSHIFT_MYSQL_DB_HOST'); // Host name 
+    $dbport = getenv('OPENSHIFT_MYSQL_DB_PORT'); // Host port
+    $dbusername = getenv('MYSQL_USER'); // MySQL username 
+    $dbpassword = getenv('MYSQL_PASSWORD'); // MySQL password 
+    $db_name = getenv('MYSQL_DATABASE'); // Database name 
+
+
+    $conn = mysqli_connect($dbhost, $dbusername, $dbpassword, $db_name);
+
     if (!$conn) {
         die("Erro ao conectar no banco de dados: " . mysqli_connect_error());
         exit();
     }
     return $conn;
 }
-
 
 // session_start inicia a sessão
 session_start();
@@ -20,8 +26,8 @@ $login = $_POST['login'];
 $senha = $_POST['senha'];
 // as próximas 3 linhas são responsáveis em se conectar com o bando de dados.
 
- $url = $_SESSION['url'];
- 
+$url = $_SESSION['url'];
+
 //include "Conecta_banco.php";
 
 $conn = Conectar_Banco();
