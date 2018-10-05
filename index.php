@@ -10,7 +10,7 @@
         <?php?
          $_SESSION['url']= "http://agenda-agenda.1d35.starter-us-east-1.openshiftapps.com/";
         ?>
-        <label>Fagner roger sd</label>
+        <label>12</label>
         
         <div id="interface">
             <header id="cabecalho">
