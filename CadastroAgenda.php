@@ -13,13 +13,25 @@
         session_start();
         $rotulo = "Cadastrar";
         if ((!isset($_SESSION['idUsuario']) >= 0)) {
-            $idUsuario = $_SESSION['idUsuario'];
+            $idAgenda = $_SESSION['idAgenda'];
             include './Conecta_banco.php';
             $conn = Conectar_Banco();
 
-            $sql = "SELECT * FROM User where User.idUsuario=\"$idUsuario\"";
+            $NomeContato = "";
+            $agContatoId = "";
+            $estCivil = "";
+            $dataNasc = "";
+            $lembrarNiver = "";
+
+            $sql = "SELECT * FROM `agContatos` where `agContatos`.`agContatoId` =\"$idAgenda\"";
             $result = mysqli_query($conn, $sql);
             while ($aux_query = mysqli_fetch_row($result)) {
+                $NomeContato = "";
+            $agContatoId = "";
+            $estCivil = "";
+            $dataNasc = "";
+            $lembrarNiver = "";
+            
                 $usuario = $aux_query[1];
                 $senha = $aux_query[2];
                 $rotulo = "Atualizar";
@@ -71,34 +83,34 @@
                         </fieldset>
 
                         <br/>  
-                        
+
                         <?php
-                            $excluirDetalhes = $_POST["excluirDetalhes"];
-                            $idUsuario = $_POST["editarDetalhes"];
+                        $excluirDetalhes = $_POST["excluirDetalhes"];
+                        $idUsuario = $_POST["editarDetalhes"];
 
-                            //$conn = Conectar_Banco();
+                        //$conn = Conectar_Banco();
 
-                            if (isset($excluirDetalhes)) {
-                                $sql = "DELETE FROM `agContatosDetalhes` WHERE `agContatosDetalhes`.`agContatoDetalhesId` = \"$excluirDetalhes\"";
+                        if (isset($excluirDetalhes)) {
+                            $sql = "DELETE FROM `agContatosDetalhes` WHERE `agContatosDetalhes`.`agContatoDetalhesId` = \"$excluirDetalhes\"";
+                            $result = mysqli_query($conn, $sql);
+                            $aux_query;
+                            echo "<script>window.parent.document.forms[0].submit(); </script>";
+                        } else {
+                            if (isset($idUsuario)) {
+
+                                $sql = "SELECT `agContatosDetalhes`.`agContatoDetalhesId`,`agContatosDetalhes`.`Contato`, `agContatosDetalhes`.`agContatoId`, `agContatosTipo`.`agTipoContatoID` FROM `agContatosDetalhes`, `agContatosTipo` WHERE `agContatosDetalhes`.`agTipoContatoId`= `agContatosTipo`.`agTipoContatoID` and `agContatoDetalhesId`=$idUsuario";
                                 $result = mysqli_query($conn, $sql);
-                                $aux_query;
-                                echo "<script>window.parent.document.forms[0].submit(); </script>";
-                            } else {
-                                if (isset($idUsuario)) {
 
-                                    $sql = "SELECT `agContatosDetalhes`.`agContatoDetalhesId`,`agContatosDetalhes`.`Contato`, `agContatosDetalhes`.`agContatoId`, `agContatosTipo`.`agTipoContatoID` FROM `agContatosDetalhes`, `agContatosTipo` WHERE `agContatosDetalhes`.`agTipoContatoId`= `agContatosTipo`.`agTipoContatoID` and `agContatoDetalhesId`=$idUsuario";
-                                    $result = mysqli_query($conn, $sql);
-
-                                    while ($aux_query2 = mysqli_fetch_row($result)) {
-                                        $Contato = $aux_query2[1];
-                                        $agTipoContatoId = $aux_query2[3];
-                                    }
-
-                                    // echo "<script>window.parent.document.forms[0].submit(); </script>";
-                                    //header("Location: http://localhost/Agenda/CadastroUsuario.php");
+                                while ($aux_query2 = mysqli_fetch_row($result)) {
+                                    $Contato = $aux_query2[1];
+                                    $agTipoContatoId = $aux_query2[3];
                                 }
+
+                                // echo "<script>window.parent.document.forms[0].submit(); </script>";
+                                //header("Location: http://localhost/Agenda/CadastroUsuario.php");
                             }
-                            ?>
+                        }
+                        ?>
                         <fieldset> 
                             <legend>Detalhes:</legend>
 
@@ -176,7 +188,7 @@
                                     ?>
                                 </tbody>
                             </table>
-                            
+
 
                         </fieldset>
 

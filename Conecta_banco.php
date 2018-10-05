@@ -4,7 +4,7 @@ function Conectar_Banco() {
     $conn = mysqli_connect("localhost", "root", "159753", "Agenda");
     /* $select = mysql_select_db("Agenda") or die("Sem acesso ao DB, Entre em 
       contato com o Administrador, fagner.couto@tga.ifmt.edu");
-     */
+     */ 
 
 
     if (!$conn) {

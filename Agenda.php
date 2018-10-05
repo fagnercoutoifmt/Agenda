@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="_css/estilo.css" />
         <link rel="stylesheet" type="text/css" href="_css/specs.css" />
     </head>
-    <body>
+    <body> 
 
         <?php
         session_start();
@@ -87,18 +87,18 @@
                 </table>
                 <?php
                 $excluir = $_POST["excluir"];
-                $idUsuario = $_POST["editar"];
+                $idAgenda = $_POST["editar"];
 
                 $conn = Conectar_Banco();
 
                 if (isset($excluir)) {
-                    $sql = "DELETE FROM User WHERE User.idUsuario = \"$excluir\"";
+                  //  $sql = "DELETE FROM User WHERE User.idUsuario = \"$excluir\"";
                     $result = mysqli_query($conn, $sql);
                     $aux_query;
                     echo "<script>window.parent.document.forms[0].submit(); </script>";
                 } else {
-                    if (isset($idUsuario)) {
-                        $_SESSION['idUsuario'] = $idUsuario;
+                    if (isset($idAgenda)) {
+                        $_SESSION['idAgenda'] = $idAgenda;
                         echo "<script>document.location='CadastroAgenda.php'</script>";
                         //header("Location: http://localhost/Agenda/CadastroUsuario.php");
                     }

@@ -58,7 +58,7 @@
                 $usuario = $_POST['login'];
                 $senha = $_POST['senha'];
                 $cadastrar = $_POST['cadastrar'];
-
+  
 
                 if (isset($cadastrar)) {
                     if (!empty($usuario) & !empty($senha)) {
