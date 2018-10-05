@@ -10,7 +10,7 @@ $senha = $_POST['senha'];
 
  $url = $_SESSION['url'];
  
-include $url."./Conecta_banco.php";
+include "Conecta_banco.php";
 
 $conn = Conectar_Banco();
 // A variavel $result pega as varias $login e $senha, faz uma 

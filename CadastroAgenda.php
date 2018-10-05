@@ -12,7 +12,7 @@
         <?php
         session_start();
         $rotulo = "Cadastrar";
-        if ((!isset($_SESSION['idUsuario']) >= 0)) {
+        if ((!isset($_SESSION['idAgenda']) >= 0)) {
             $idAgenda = $_SESSION['idAgenda'];
             include './Conecta_banco.php';
             $conn = Conectar_Banco();
@@ -22,18 +22,21 @@
             $estCivil = "";
             $dataNasc = "";
             $lembrarNiver = "";
+            
+           
+
+
 
             $sql = "SELECT * FROM `agContatos` where `agContatos`.`agContatoId` =\"$idAgenda\"";
             $result = mysqli_query($conn, $sql);
             while ($aux_query = mysqli_fetch_row($result)) {
-                $NomeContato = "";
-            $agContatoId = "";
-            $estCivil = "";
-            $dataNasc = "";
-            $lembrarNiver = "";
-            
-                $usuario = $aux_query[1];
-                $senha = $aux_query[2];
+
+                $agContatoId = $aux_query[0];
+                $NomeContato = $aux_query[1];
+                $estCivil = $aux_query[2];
+                $dataNasc = $aux_query[3];
+                $lembrarNiver = $aux_query[4];
+
                 $rotulo = "Atualizar";
             }
         }
@@ -59,15 +62,15 @@
                     <fieldset id="fie">
                         <legend>Cadastro de Contato</legend> <p/>
                         <label>Nome :</label>
-                        <input type="text" style="width: 760px;" name="login" value="<?= $Contato ?>" id="login"  /><p/>
+                        <input type="text" style="width: 760px;" name="login" value="<?= $NomeContato ?>" id="login"  /><p/>
 
                         <p> 
                             <label for="cData">Data de Nascimento:</label>
-                            <input type="date" name="tData" id="cData" />
+                            <input type="date" name="<?= $dataNasc ?>" id="cData" />
                         </p>
 
                         <p> <label> Estado:</label>
-                            <select name="tEst" id="cEst">
+                            <select name="<?= $estCivil ?>" id="cEst">
 
                                 <option value="PR">Paraná</option>
                                 <option value="RS">Rio Grande do Sul</option>
@@ -75,18 +78,18 @@
                             </select>
                         </p>
 
-                        <fieldset id="sexo"><legend>Sexo:</legend>
-                            <input type="radio" name="tSexo" id="cMasc" />
-                            <label for="cMasc">Masculino</label><br />
-                            <input type="radio" name="tSexo" id="cFem" />
-                            <label for="cFem">Feminino</label>
-                        </fieldset>
+                        <!-- <fieldset id="sexo"><legend>Sexo:</legend>
+                             <input type="radio" name="tSexo" id="cMasc" />
+                             <label for="cMasc">Masculino</label><br />
+                             <input type="radio" name="tSexo" id="cFem" />
+                             <label for="cFem">Feminino</label>
+                         </fieldset>-->
 
                         <br/>  
 
                         <?php
                         $excluirDetalhes = $_POST["excluirDetalhes"];
-                        $idUsuario = $_POST["editarDetalhes"];
+                        $agContatoDetalhesId = $_POST["editarDetalhes"];
 
                         //$conn = Conectar_Banco();
 
@@ -96,9 +99,9 @@
                             $aux_query;
                             echo "<script>window.parent.document.forms[0].submit(); </script>";
                         } else {
-                            if (isset($idUsuario)) {
+                            if (isset($agContatoDetalhesId)) {
 
-                                $sql = "SELECT `agContatosDetalhes`.`agContatoDetalhesId`,`agContatosDetalhes`.`Contato`, `agContatosDetalhes`.`agContatoId`, `agContatosTipo`.`agTipoContatoID` FROM `agContatosDetalhes`, `agContatosTipo` WHERE `agContatosDetalhes`.`agTipoContatoId`= `agContatosTipo`.`agTipoContatoID` and `agContatoDetalhesId`=$idUsuario";
+                                $sql = "SELECT `agContatosDetalhes`.`agContatoDetalhesId`,`agContatosDetalhes`.`Contato`, `agContatosDetalhes`.`agContatoId`, `agContatosTipo`.`agTipoContatoID` FROM `agContatosDetalhes`, `agContatosTipo` WHERE `agContatosDetalhes`.`agTipoContatoId`= `agContatosTipo`.`agTipoContatoID` and `agContatoDetalhesId`=$idAgenda";
                                 $result = mysqli_query($conn, $sql);
 
                                 while ($aux_query2 = mysqli_fetch_row($result)) {
@@ -119,10 +122,10 @@
                                 <input type="text" style="width: 293px;" name="Contato" value="<?= $Contato ?>" />
 
                                 <label> Tipo Contato:</label>
-                                <select name="c" id="cEst">
-                                    <option value="PR">Paraná</option>
-                                    <option value="RS">Rio Grande do Sul</option>
-                                    <option value="SC">Santa Catarina</option>
+                                <select name="<?= $agTipoContatoId ?>" id="cEst">
+                                    <option value="1">Paraná</option>
+                                    <option value="1">Rio Grande do Sul</option>
+                                    <option value="1">Santa Catarina</option>
                                 </select>                                   
 
                                 <input type="submit" name="InserirDetalhes" value="Inserir"/>                               
@@ -130,12 +133,18 @@
 
                             <?php
                             $inserirDetalhes = $_POST["InserirDetalhes"];
-                            $agContatoId = 1;
+                            if (isset($agContatoId) < 0) {
+                                //criar
+                            } else {
+                                $agContatoId = $idAgenda;
+                                $agTipoContatoId = 1;
+                            }
+
                             $Contato = $_POST["Contato"];
-                            $agTipoContatoId = 1;
+
 
                             if (isset($inserirDetalhes)) {
-                                if (!empty($Contato) & !empty($tipoContato)) {
+                                if (!empty($Contato) & !empty($agTipoContatoId)) {
                                     $sql = "INSERT INTO `agContatosDetalhes`(`Contato`, `agContatoId`, `agTipoContatoId`) "
                                             . "VALUES (\"$Contato\",\"$agContatoId\",\"$agTipoContatoId\")";
                                     $result = mysqli_query($conn, $sql);
@@ -154,7 +163,8 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $sql = "SELECT `agContatosDetalhes`.`agContatoDetalhesId`,`agContatosDetalhes`.`Contato`, `agContatosTipo`.`descricao` FROM `agContatosDetalhes`, `agContatosTipo` WHERE `agContatosDetalhes`.`agTipoContatoId`= `agContatosTipo`.`agTipoContatoID`";
+                                     echo "$idAgenda";
+                                    $sql = "SELECT `agContatosDetalhes`.`agContatoDetalhesId`,`agContatosDetalhes`.`Contato`, `agContatosTipo`.`descricao` FROM `agContatosDetalhes`, `agContatosTipo` WHERE `agContatosDetalhes`.`agTipoContatoId`= `agContatosTipo`.`agTipoContatoID` and `agContatosDetalhes`.`agContatoId`= $idAgenda";
                                     $result = mysqli_query($conn, $sql);
                                     $aux_query;
                                     echo "<p/>";
