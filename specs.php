@@ -26,10 +26,10 @@
                     <section id="conteudo">
                         <img src="_imagens/glass-esquema-marcado.jpg" usemap="aImagem"/>																	 			
                         <map name="aImagem">
-                            <area shape="rect" coords="179,202,270,260" href="google-glass.html#tela" target="janela" />
-                            <area shape="circle" coords="158,243,12" href="google-glass.html#camera" target="janela" />
-                            <area shape="circle" coords="73,52,12" href="google-glass.html#gadgets" target="janela" />
-                            <area shape="poly" coords="28,143,83,216,84,249,27,169" href="google-glass.html#sensores" target="janela" />
+                            <area shape="rect" coords="179,202,270,260" href="./google-glass.html#tela" target="janela" />
+                            <area shape="circle" coords="158,243,12" href="./google-glass.html#camera" target="janela" />
+                            <area shape="circle" coords="73,52,12" href="./google-glass.html#gadgets" target="janela" />
+                            <area shape="poly" coords="28,143,83,216,84,249,27,169" href="./google-glass.html#sensores" target="janela" />
                         </map>
                         <iframe scrolling="no" src="google-glass.html" name="janela" id="frameEspec"></iframe>
                     </section>

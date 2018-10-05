@@ -22,10 +22,6 @@
             $estCivil = "";
             $dataNasc = "";
             $lembrarNiver = "";
-            
-           
-
-
 
             $sql = "SELECT * FROM `agContatos` where `agContatos`.`agContatoId` =\"$idAgenda\"";
             $result = mysqli_query($conn, $sql);
@@ -78,14 +74,10 @@
                             </select>
                         </p>
 
-                        <!-- <fieldset id="sexo"><legend>Sexo:</legend>
-                             <input type="radio" name="tSexo" id="cMasc" />
-                             <label for="cMasc">Masculino</label><br />
-                             <input type="radio" name="tSexo" id="cFem" />
-                             <label for="cFem">Feminino</label>
-                         </fieldset>-->
-
-                        <br/>  
+                        <p>
+                            <input type="checkbox" name="tPed" id="cPed" checked />
+                            <label for="cPed">Lembrar do Aniversário?</label>
+                        </p>
 
                         <?php
                         $excluirDetalhes = $_POST["excluirDetalhes"];
@@ -163,7 +155,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                     echo "$idAgenda";
+                                    echo "$idAgenda";
                                     $sql = "SELECT `agContatosDetalhes`.`agContatoDetalhesId`,`agContatosDetalhes`.`Contato`, `agContatosTipo`.`descricao` FROM `agContatosDetalhes`, `agContatosTipo` WHERE `agContatosDetalhes`.`agTipoContatoId`= `agContatosTipo`.`agTipoContatoID` and `agContatosDetalhes`.`agContatoId`= $idAgenda";
                                     $result = mysqli_query($conn, $sql);
                                     $aux_query;
@@ -204,32 +196,7 @@
 
                         <p> <input type="submit" name="cadastrar" value="<?= $rotulo ?> "  /></p>
                     </fieldset>
-                </form>
-                <!--
-                <?php /*
-                  $usuario = $_POST['login'];
-                  $senha = $_POST['senha'];
-                  $cadastrar = $_POST['cadastrar'];
-
-
-                  if (isset($cadastrar)) {
-                  if (!empty($usuario) & !empty($senha)) {
-                  if ($idUsuario >= 0) {
-                  $sql = "UPDATE `User` SET login=\"$usuario\",senha=\"$senha\" WHERE idUsuario= $idUsuario";
-                  $result = mysqli_query($conn, $sql);
-                  $idUsuario = -1;
-                  $_SESSION['idUsuario'] = $idUsuario;
-                  header('location:site.php');
-                  } else {
-                  $sql = "insert into User (login, senha) values (\"$usuario\",\"$senha\")";
-                  $result = mysqli_query($conn, $sql);
-                  header('location:index.php');
-                  }
-                  } else {
-                  echo"<script language='javascript' type='text/javascript'>alert('Campos em brancos');window.location.href='cadUsuario.php';</script>";
-                  }
-                  }
-                 */ ?>-->
+                </form>                
             </article>
         </section>
 
