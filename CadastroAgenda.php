@@ -75,7 +75,7 @@
                         <?php
                             $excluirDetalhes = $_POST["excluirDetalhes"];
                             $idUsuario = $_POST["editarDetalhes"];
-
+ 
                             //$conn = Conectar_Banco();
 
                             if (isset($excluirDetalhes)) {

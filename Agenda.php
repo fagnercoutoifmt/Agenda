@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="_css/estilo.css" />
         <link rel="stylesheet" type="text/css" href="_css/specs.css" />
     </head>
-    <body>
+    <body> 
 
         <?php
         session_start();
