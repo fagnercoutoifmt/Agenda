@@ -7,7 +7,10 @@ session_start();
 $login = $_POST['login'];
 $senha = $_POST['senha'];
 // as próximas 3 linhas são responsáveis em se conectar com o bando de dados.
-include './Conecta_banco.php';
+
+ $url = $_SESSION['url'];
+ 
+include $url."./Conecta_banco.php";
 
 $conn = Conectar_Banco();
 // A variavel $result pega as varias $login e $senha, faz uma 
@@ -24,7 +27,7 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     $_SESSION['login'] = $login;
     $_SESSION['senha'] = $senha;
-    header('location:site.php');
+    header('location:Agenda.php');
 } else {
     unset($_SESSION['login']);
     unset($_SESSION['senha']);
