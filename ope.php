@@ -1,5 +1,17 @@
 <?php
 
+function Conectar_Banco() {
+    
+    $conn = mysqli_connect("localhost", "root", "159753", "Agenda");
+   
+    if (!$conn) {
+        die("Erro ao conectar no banco de dados: " . mysqli_connect_error());
+        exit();
+    }
+    return $conn;
+}
+
+
 // session_start inicia a sessão
 session_start();
 // as variáveis login e senha recebem os dados digitados na página anterior
@@ -10,7 +22,7 @@ $senha = $_POST['senha'];
 
  $url = $_SESSION['url'];
  
-include "Conecta_banco.php";
+//include "Conecta_banco.php";
 
 $conn = Conectar_Banco();
 // A variavel $result pega as varias $login e $senha, faz uma 
