@@ -24,17 +24,23 @@
 
     <div id="interface">
         <header id="cabecalho">
-            <?php include('./Cabecalho.html'); ?> 
+            <?php include('../Agenda/Cabecalho.html'); ?> 
         </header>
 
         <section id="corpoInteiro">
             <article id="artigoPrincipal">
                 <header id="cabecalhoArtigo">
-                    <?php include('./Menu.html'); ?> 
+                    <?php include('../Agenda/Menu.html'); ?> 
                     <h1>
                         Lista de Contatos
                     </h1>
                 </header>
+
+                <form method="POST" action="./formAgenda.php" id="formlogin" name="formlogin" >
+                    <input type="submit" name="NovoCadastro" value="Inserir"  /><p/>
+                </form>   
+
+
 
                 <table id="tabelaUser">
                     <thead>
@@ -47,13 +53,9 @@
                     </thead>
                     <tbody>
                         <?php
-                        include './Conecta_banco.php';
+                        include './AgendaMenager.php';
+                        $result = getAgContatos();
 
-                        $conn = Conectar_Banco();
-
-                        $sql = "SELECT * FROM `agContatos`";
-                        $result = mysqli_query($conn, $sql);
-                        $aux_query;
                         while ($aux_query = mysqli_fetch_row($result)) {
                             echo "<tr>
                             <td class=\"colDir\" style=\"width: 80px;\">" . $aux_query[0] . "</td>
@@ -63,16 +65,16 @@
                             
                             <td class=\"colDir\" style=\"width: 90px;\">" . $aux_query[2] . "</td>
                             <td class=\"colDir\" style=\"width: 90px;\">" . $aux_query[3] . "</td>
-                            <form method=\"POST\">
+                            <form method=\"POST\" action=\"./formAgenda.php\" id=\"formAgenda\">
                                 <td class=\"colDir\" style=\"width: 80px;\">                            
-                                    <button name=\"editar\" value=\"$aux_query[0]\" src=\"_imagens/login.png\" type=\"submit\">
+                                    <button name=\"idAgendaEdit\" value=\"$aux_query[0]\" src=\"_imagens/login.png\" type=\"submit\">
                                         <span>  
                                             Editar
                                         </span>
                                     </button>                           
                                 </td>
                                 <td class=\"colDir\" style=\"width: 80px;\">                           
-                                    <button name=\"excluir\" value=\"$aux_query[0]\"  type=\"submit\">
+                                    <button name=\"idAgendaExcluir\" value=\"$aux_query[0]\"  type=\"submit\">
                                         <span>
                                             Excluir
                                         </span>
@@ -85,25 +87,8 @@
                         ?>
                     </tbody>
                 </table>
-                <?php
-                $excluir = $_POST["excluir"];
-                $idAgenda = $_POST["editar"];
 
-                $conn = Conectar_Banco();
 
-                if (isset($excluir)) {
-                  //  $sql = "DELETE FROM User WHERE User.idUsuario = \"$excluir\"";
-                    $result = mysqli_query($conn, $sql);
-                    $aux_query;
-                    echo "<script>window.parent.document.forms[0].submit(); </script>";
-                } else {
-                    if (isset($idAgenda)) {
-                        $_SESSION['idAgenda'] = $idAgenda;
-                        echo "<script>document.location='CadastroAgenda.php'</script>";
-                        //header("Location: http://localhost/Agenda/CadastroUsuario.php");
-                    }
-                }
-                ?>
             </article>
         </section>
         <footer id="rodape">
