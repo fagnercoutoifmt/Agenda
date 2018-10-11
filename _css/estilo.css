@@ -7,12 +7,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 
-body {
-	background-color: #ddd;
-	color: rgba(0,0,0,1);
-	font-family: 'Roboto Mono', monospace;
-	line-height: 1.5;
-}
+
 
 div#interface {
 	width:	900px;
