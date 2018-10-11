@@ -17,7 +17,7 @@ if (isset($_POST['update'])) {
             echo "Error Update Login";
             echo "<br/>" . mysqli_error($mysqli);
         } else {
-            header("Location: listUser.php");
+            header("Location: http://www.ficifmt.online/User/listUser.php");
         }
     }
 }

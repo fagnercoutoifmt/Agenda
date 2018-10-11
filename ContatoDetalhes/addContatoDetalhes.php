@@ -56,7 +56,7 @@ if (isset($_POST['insertContatoDetalhes'])) {
                 echo "<br/>" . mysqli_error($mysqli);
             } else {
                 echo "IDDDD: $agContatoId";
-                header("Location: http://localhost/Agenda/ContatoDetalhes/addContatoDetalhes.php?id=" . $agContatoId);
+                header("Location: http://www.ficifmt.online/ContatoDetalhes/addContatoDetalhes.php?id=" . $agContatoId);
             }
         } else {
             $agContatoDetalhesId = mysqli_real_escape_string($mysqli, $_POST['agContatoDetalhesId']);
@@ -71,7 +71,7 @@ if (isset($_POST['insertContatoDetalhes'])) {
                 echo "<br/>" . mysqli_error($mysqli);
             } else {
                 //echo "IDDDD: $agContatoId";
-                header("Location: http://localhost/Agenda/ContatoDetalhes/addContatoDetalhes.php?id=" . $agContatoId);
+                header("Location: http://www.ficifmt.online/ContatoDetalhes/addContatoDetalhes.php?id=" . $agContatoId);
             }
         }
     }

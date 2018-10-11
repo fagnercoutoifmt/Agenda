@@ -14,7 +14,7 @@
         if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
             unset($_SESSION['login']);
             unset($_SESSION['senha']);
-            header('location:index.php');
+            header('location:./index.php');
         }
 
         $logado = $_SESSION['login'];
@@ -24,13 +24,13 @@
 
     <div id="interface">
         <header id="cabecalho">
-            <?php include('../Agenda/Cabecalho.html'); ?> 
+            <?php include('./Cabecalho.html'); ?> 
         </header>
 
         <section id="corpoInteiro">
             <article id="artigoPrincipal">
                 <header id="cabecalhoArtigo">
-                    <?php include('../Agenda/Menu.html'); ?> 
+                    <?php include('./Menu.html'); ?> 
                     <h1>
                         Lista de Contatos
                     </h1>

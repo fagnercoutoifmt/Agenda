@@ -28,7 +28,7 @@ if (!empty($_GET['id'])) {
 
 <?php
 if (isset($_POST['voltar'])) {
-    header("Location: http://localhost/Agenda/Contato/listContato.php");
+    header("Location: http://www.ficifmt.online/Contato/listContato.php");
 }
 ?>
 
@@ -64,9 +64,9 @@ if (isset($_POST['updateContato']) || isset($_POST['addContatoDetalhes'])) {
                 echo "<br/>" . mysqli_error($mysqli);
             } else {
                 if (!isset($_POST['addContatoDetalhes'])) {
-                    header("Location: http://localhost/Agenda/Contato/listContato.php");
+                    header("Location: http://www.ficifmt.online/Contato/listContato.php");
                 } else {
-                    header("Location: http://localhost/Agenda/ContatoDetalhes/addContatoDetalhes.php?id=" . $id);
+                    header("Location: http://www.ficifmt.online/ContatoDetalhes/addContatoDetalhes.php?id=" . $id);
                 }
             }
         } else {
@@ -80,11 +80,10 @@ if (isset($_POST['updateContato']) || isset($_POST['addContatoDetalhes'])) {
                 echo "<br/>" . mysqli_error($mysqli);
             } else {
                 if (!isset($_POST['addContatoDetalhes'])) {
-                    header("Location: http://localhost/Agenda/Contato/listContato.php");
+                    header("Location: http://www.ficifmt.online/Contato/listContato.php");
                 } else {
                     $id = mysqli_insert_id($link);
-                    echo "ID: $id";
-                    // header("Location: http://localhost/Agenda/ContatoDetalhes/addContatoDetalhes.php?id=" . $id);
+                    header("Location: http://www.ficifmt.online/ContatoDetalhes/addContatoDetalhes.php?id=" . $id);
                 }
             }
         }

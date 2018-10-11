@@ -32,7 +32,7 @@ if (isset($_POST['UpdateDetalhes'])) {
             echo "Error UpdateDetalhes [editContatoDetalhes]";
             echo "<br/>" . mysqli_error($mysqli);
         } else {
-            require_once 'http://localhost/Agenda/Contato/editContato.php';
+            require_once 'http://www.ficifmt.online/Contato/editContato.php';
          // header('location:http://localhost/Agenda/Contato/editContato.php?id=' . $agContatoId);
         }
     }
