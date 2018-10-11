@@ -7,11 +7,6 @@
         <link rel="stylesheet" href="_css/estilo.css" />
     </head>
     <body>
-        <?php?
-         $_SESSION['url']= "http://agenda-agenda.1d35.starter-us-east-1.openshiftapps.com/";
-        ?>
-        <label>13</label>
-        
         <div id="interface">
             <header id="cabecalho">
                 <?php include('./Cabecalho.html'); ?>              

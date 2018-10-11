@@ -14,10 +14,10 @@ $result = mysqli_query($mysqli, $sql);
 if (mysqli_num_rows($result) > 0) {
     $_SESSION['login'] = $login;
     $_SESSION['senha'] = $senha;
-    header('location:http://localhost/Agenda/Contato/listContato.php');
+    header('location:http://www.ficifmt.online/Contato/listContato.php');
 } else {
     unset($_SESSION['login']);
     unset($_SESSION['senha']);
-    echo"<script language='javascript' type='text/javascript'>alert('Login e/ou senha incorretos');window.location.href='index.php';</script>";
+    echo"<script language='javascript' type='text/javascript'>alert('Login e/ou senha incorretos');window.location.href='http://www.ficifmt.online/index.php';</script>";
 }
 ?>

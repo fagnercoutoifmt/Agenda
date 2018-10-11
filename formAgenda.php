@@ -21,7 +21,7 @@ if (isset($idAgendaExcluir)) {
         echo "Erro";
     }
 
-    header('location: http://localhost/Agenda/Agenda.php');
+    header('location: ./Agenda.php');
 } else {
     if (isset($idAgendaEdit)) {
         $_SESSION['isEdit'] = true;

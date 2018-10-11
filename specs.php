@@ -24,7 +24,7 @@
                         informações sobre os recursos do Google Glass. Qualquer 
                         ponto vermelho vai te levar a um lugar cheio de novas informações.</p>
                     <section id="conteudo">
-                        <img src="_imagens/glass-esquema-marcado.jpg" usemap="aImagem"/>																	 			
+                        <img src="http://www.ficifmt.online/_imagens/glass-esquema-marcado.jpg" usemap="aImagem"/>																	 			
                         <map name="aImagem">
                             <area shape="rect" coords="179,202,270,260" href="http://www.ficifmt.online/google-glass.html#tela" target="janela" />
                             <area shape="circle" coords="158,243,12" href="http://www.ficifmt.online/google-glass.html#camera" target="janela" />
