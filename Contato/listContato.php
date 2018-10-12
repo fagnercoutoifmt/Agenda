@@ -77,7 +77,7 @@ CheckLogin();
                 </article>
             </section>
             <footer id="rodape">
-<?php include('../Rodape.html'); ?> 
+                <?php include('../Rodape.html'); ?> 
             </footer>
         </div>
     </body>
