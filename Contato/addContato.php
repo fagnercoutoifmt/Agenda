@@ -4,6 +4,8 @@
 session_start();
 include("../DataBase/config.php");
 
+CheckLogin();
+
 $idAgenda = $_SESSION['idAgenda'];
 
 if (isset($idAgenda)) {
