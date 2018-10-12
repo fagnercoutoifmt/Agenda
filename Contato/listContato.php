@@ -2,13 +2,8 @@
 
 <?php
 session_start();
-if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
-    unset($_SESSION['login']);
-    unset($_SESSION['senha']);
-    header('location:http://www.ficifmt.online/index.php');
-}
-
-$logado = $_SESSION['login'];
+include("../DataBase/config.php");
+CheckLogin();
 ?>
 
 <html lang="pt-br">
@@ -49,8 +44,6 @@ $logado = $_SESSION['login'];
                         </thead>
                         <tbody>
                             <?php
-                            include("../DataBase/config.php");
-
                             $sql = "SELECT * FROM `agContatos`";
                             $result = mysqli_query($mysqli, $sql);
 
@@ -84,7 +77,7 @@ $logado = $_SESSION['login'];
                 </article>
             </section>
             <footer id="rodape">
-                <?php include('../Rodape.html'); ?> 
+<?php include('../Rodape.html'); ?> 
             </footer>
         </div>
     </body>

@@ -3,6 +3,7 @@
 <?php
 //including the database connection file
 include_once("../DataBase/config.php");
+CheckLogin();
 
 if (isset($_POST['Submit'])) {
     $login = mysqli_real_escape_string($mysqli, $_POST['login']);

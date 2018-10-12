@@ -2,6 +2,7 @@
 <?php
 session_start();
 include_once("../DataBase/config.php");
+CheckLogin();
 
 if (isset($_POST['update'])) {
 

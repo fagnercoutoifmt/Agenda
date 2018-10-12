@@ -17,6 +17,7 @@
 <?php
 
 include("../DataBase/config.php");
+CheckLogin();
 
 if (isset($_POST['UpdateDetalhes'])) {
 

@@ -2,6 +2,8 @@
 session_start();
 include("../DataBase/config.php");
 
+CheckLogin();
+
 //edit
 if (!empty($_GET['agContatoDetalhesId']) && !empty($_GET['id'])) {
 
