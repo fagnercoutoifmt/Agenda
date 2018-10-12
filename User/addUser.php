@@ -15,7 +15,11 @@ if (isset($_POST['Submit'])) {
             echo "Error Insert Login";
             echo "<br/>" . mysqli_error($mysqli);
         } else {
-            header("Location: http://www.ficifmt.online/User/listUser.php");
+            if ($_SESSION['login'] == TRUE) {
+                header("Location: http://www.ficifmt.online/User/listUser.php");
+            } else {
+                header('location:http://www.ficifmt.online/index.php');
+            }
         }
     }
 }
