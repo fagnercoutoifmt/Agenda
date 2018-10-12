@@ -1,6 +1,7 @@
 <?php
 
 include("../DataBase/config.php");
+CheckLogin();
 
 $id = $_GET['id'];
 

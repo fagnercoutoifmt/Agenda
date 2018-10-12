@@ -4,6 +4,8 @@
 session_start();
 include("../DataBase/config.php");
 
+CheckLogin();
+
 if (!empty($_GET['id'])) {
     $idAgenda = $_GET['id'];
     $rotuloContato = "Atualizar";
