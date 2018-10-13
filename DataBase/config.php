@@ -6,6 +6,7 @@ $databaseUsername = 'u955396766_fagne';
 $databasePassword = 'Fic2018@';
 
 $mysqli = mysqli_connect($databaseHost, $databaseUsername, $databasePassword, $databaseName);
+mysqli_set_charset($mysqli, "utf8");
 
 if (!$mysqli) {
     die("Erro ao conectar no banco de dados: " . mysqli_connect_error());
