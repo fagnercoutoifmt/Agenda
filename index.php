@@ -13,7 +13,7 @@
             </header>
 
             <section id="corpo">
-                <?php include('./Corpo.html'); ?>              
+                <?php include('./Corpo.php'); ?>              
             </section>
             
             <aside id="lateral">      
